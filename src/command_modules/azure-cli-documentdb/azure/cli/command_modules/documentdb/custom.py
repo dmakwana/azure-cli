@@ -9,7 +9,9 @@ from azure.mgmt.documentdb.models import (
     Location
 )
 from azure.mgmt.documentdb.models.document_db_enums import DatabaseAccountKind
-
+import pydocumentdb.documents as documents
+import pydocumentdb.document_client as document_client
+import pydocumentdb.errors as errors
 
 # pylint:disable=too-many-arguments
 def cli_documentdb_create(client,
@@ -111,3 +113,10 @@ def cli_documentdb_list(client,
         return client.list_by_resource_group(resource_group_name)
     else:
         return client.list()
+
+def cli_documentdb_list_databases(client, resource_group_name, account_name):
+    docdb_account = client.get(resource_group_name, account_name)
+    keys = client.list_keys(resource_group_name,account_name)
+    masterKey = keys.primary_master_key
+    doc_client = document_client.  DocumentClient(docdb_account.document_endpoint, {'masterKey': masterKey} )
+    return list(doc_client.ReadDatabases())

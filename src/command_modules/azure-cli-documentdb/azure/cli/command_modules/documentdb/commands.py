@@ -24,3 +24,5 @@ cli_command(__name__, 'documentdb failover-priority-change', mgmt_path.format('D
 cli_command(__name__, 'documentdb create', 'azure.cli.command_modules.documentdb.custom#cli_documentdb_create', db_accounts_factory)
 cli_command(__name__, 'documentdb update', 'azure.cli.command_modules.documentdb.custom#cli_documentdb_update', db_accounts_factory)
 cli_command(__name__, 'documentdb list', 'azure.cli.command_modules.documentdb.custom#cli_documentdb_list', db_accounts_factory)
+
+cli_command(__name__, 'documentdb database list', 'azure.cli.command_modules.documentdb.custom#cli_documentdb_list_databases', db_accounts_factory)

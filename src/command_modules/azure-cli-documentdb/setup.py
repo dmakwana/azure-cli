@@ -28,6 +28,7 @@ CLASSIFIERS = [
 
 DEPENDENCIES = [
     'azure-mgmt-documentdb==0.1.1',
+    'pydocumentdb==2.0.1',
     'azure-cli-core'
 ]
 
